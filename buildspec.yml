@@ -14,7 +14,7 @@ phases:
       - sed -i "s|khushboo|$host|g" wp-config.php
       - sed -i "s|khushboo|$username|g" wp-config.php
       - sed -i "s|khushboo|$pass|g" wp-config.php
-      - sed -i "s|khushboo.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|g" wp-config.php
+      - sed -i "s|khushboo.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|$endpoint|g" wp-config.php
       - sed -i "s|:3306||g" wp-config.php
       - cat wp-config.php
       
