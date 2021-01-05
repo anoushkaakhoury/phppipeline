@@ -11,10 +11,10 @@ phases:
   build:
     commands:
       - mv wp-config-sample.php wp-config.php
-      - sed -i "s|admin|$host|g" wp-config.php
-      - sed -i "s|admin|$username|g" wp-config.php
-      - sed -i "s|adminadmin|$pass|g" wp-config.php
-      - sed -i "s|admink.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|g" wp-config.php
+      - sed -i "s|khushboo|$host|g" wp-config.php
+      - sed -i "s|khushboo|$username|g" wp-config.php
+      - sed -i "s|khushboo|$pass|g" wp-config.php
+      - sed -i "s|khushboo.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|g" wp-config.php
       - sed -i "s|:3306||g" wp-config.php
       - cat wp-config.php
       
