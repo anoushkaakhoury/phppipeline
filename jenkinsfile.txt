@@ -1,0 +1,28 @@
+#!/bin/sh
+pipeline {
+    agent any
+    stages {
+        stage('Checkout Repo') {
+            steps {
+		git credentialsId: 'Git-Credentials', url:'https://github.com/khushi1997n/phppipeline.git', branch: 'master'
+            }
+        }
+	stage('Build') {
+            steps {
+		rm -rf /root/.phpenv
+               	add-apt-repository -y ppa:ondrej/php
+               	apt -qq update -y
+               	apt -qq install php libapache2-mod-php php-mysql -y
+               	apt -qq install php-curl php-gd php-xml php-mbstring php-xmlrpc php-zip php-soap php-intl -y
+            }
+         steps {
+          	mv wp-config-sample.php wp-config.php
+       		sed -i "s|khushboo|$host|g" wp-config.php
+       		sed -i "s|khushboo|$username|g" wp-config.php
+       		sed -i "s|khushboo|$pass|g" wp-config.php
+       		sed -i "s|khushboo.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|$endpoint|g" wp-config.php
+          	sed -i "s|:3306||g" wp-config.php
+          	cat wp-config.php
+        }
+}
+	
