@@ -24,4 +24,5 @@ pipeline {
           	cat wp-config.php
         }
 }
+}
 	
