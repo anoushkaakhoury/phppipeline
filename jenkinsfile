@@ -9,7 +9,7 @@ pipeline
 	          git credentialsId: 'Git-Credentials', url:'https://github.com/khushi1997n/phppipeline.git', branch: 'master'
           }
       }
-	    stage('Build') {
+      stage('Build') {
         steps {
             sh 'rm -rf /root/.phpenv'
            	sh 'add-apt-repository -y ppa:ondrej/php'
