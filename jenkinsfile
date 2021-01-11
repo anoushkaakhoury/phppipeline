@@ -1,29 +1,98 @@
-#!/bin/sh
-pipeline {
+
+
+GK:speech_balloon:  10:42 AM
+Task Update :
+working on jenkinsfile for previous deployment
+
+Yogesh Gupta  10:43 AM
+task update:-
+                  covered theory part of OWASP top 10 vulnerabilities and can we connect @Nitin sir.
+
+
+2 replies
+Last reply today at 12:22 PMView thread
+
+Khushboo  10:45 AM
+Task Updates:
+Getting some errors because of jenkinsfile working on resolving that error
+
+Khushboo  11:40 AM
+@Rohit Kumar sir can you please suggest me If I'm doing something wrong here. I've sent you the jenkinsfile previously
+image.png 
+image.png
+
+
+New
+
+Ankush  12:51 PM
+@Rohit Kumar please have a look into this, i guess she stuck from last week on this
+
+Rohit Kumar  12:52 PM
+@Ankush Okay I'll check
+
+Rohit Kumar  12:57 PM
+@Khushboo #!/bin/sh
+pipeline
+{
     agent any
-    stages {
-        stage('Checkout Repo') {
-            steps {
-		git credentialsId: 'Git-Credentials', url:'https://github.com/khushi1997n/phppipeline.git', branch: 'master'
-            }
+    stages
+    {
+      stage('Checkout Repo') {
+          steps {
+	          git credentialsId: 'Git-Credentials', url:'https://github.com/khushi1997n/phppipeline.git', branch: 'master'
+          }
+      }
+	    stage('Build') {
+        steps {
+            sh 'rm -rf /root/.phpenv'
+           	sh 'add-apt-repository -y ppa:ondrej/php'
+           	sh 'apt -qq update -y'
+           	sh 'apt -qq install php libapache2-mod-php php-mysql -y'
+           	sh 'apt -qq install php-curl php-gd php-xml php-mbstring php-xmlrpc php-zip php-soap php-intl -y'
         }
-	stage('Build') {
-            steps {
-               	apt -qq update -y
-               	apt -qq install php libapache2-mod-php php-mysql -y
-               	apt -qq install php-curl php-gd php-xml php-mbstring php-xmlrpc php-zip php-soap php-intl -y
-            }
-         	steps {
-          	mv wp-config-sample.php wp-config.php
-       		sed -i "s|khushboo|$host|g" wp-config.php
-       		sed -i "s|khushboo|$username|g" wp-config.php
-       		sed -i "s|khushboo|$pass|g" wp-config.php
-       		sed -i "s|khushboo.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|$endpoint|g" wp-config.php
-          	sed -i "s|:3306||g" wp-config.php
-          	cat wp-config.php
-		}
+       	steps {
+        	sh 'mv wp-config-sample.php wp-config.php'
+       		sh 'sed -i "s|khushboo|$host|g" wp-config.php'
+       		sh 'sed -i "s|khushboo|$username|g" wp-config.php'
+       		sh 'sed -i "s|khushboo|$pass|g" wp-config.php'
+       		sh 'sed -i "s|khushboo.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|$endpoint|g" wp-config.php'
+          sh 'sed -i "s|:3306||g" wp-config.php'
+        	sh 'cat wp-config.php'
         }
+      }
+    }
 }
+12:57
+#!/bin/sh
+pipeline 
+{
+    agent any
+    stages 
+    {
+      stage('Checkout Repo') {
+          steps {
+	          git credentialsId: 'Git-Credentials', url:'https://github.com/khushi1997n/phppipeline.git', branch: 'master'
+          }
+      }
+	    stage('Build') {
+        steps {
+            sh 'rm -rf /root/.phpenv'
+           	sh 'add-apt-repository -y ppa:ondrej/php'
+           	sh 'apt -qq update -y'
+           	sh 'apt -qq install php libapache2-mod-php php-mysql -y'
+           	sh 'apt -qq install php-curl php-gd php-xml php-mbstring php-xmlrpc php-zip php-soap php-intl -y'
+        }
+       	steps {
+        	sh 'mv wp-config-sample.php wp-config.php'
+       		sh 'sed -i "s|khushboo|$host|g" wp-config.php'
+       		sh 'sed -i "s|khushboo|$username|g" wp-config.php'
+       		sh 'sed -i "s|khushboo|$pass|g" wp-config.php'
+       		sh 'sed -i "s|khushboo.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|$endpoint|g" wp-config.php'
+          sh 'sed -i "s|:3306||g" wp-config.php'
+        	sh 'cat wp-config.php'
+        }
+      }
+    }
 }
 
 	
