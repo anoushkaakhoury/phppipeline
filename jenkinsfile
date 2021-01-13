@@ -11,7 +11,7 @@ pipeline
       }
       stage('Build') {
           steps {
-             sh 'rm -rf /root/.phpenv'
+             sh 'sudo rm -rf /root/.phpenv'
            	sh 'add-apt-repository -y ppa:ondrej/php'
            	sh 'apt -qq update -y'
            	sh 'apt -qq install php libapache2-mod-php php-mysql -y'
