@@ -18,7 +18,7 @@ pipeline
        		sh 'sed -i "s|khushboo.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|$endpoint|g" wp-config.php'
                 sh 'sed -i "s|:3306||g" wp-config.php'
         	sh 'cat wp-config.php'
-		}
+		}}
       stage('Depoly') {
           steps {
                sh 'sudo apt update -y'
@@ -30,6 +30,6 @@ pipeline
     }
 }
 }
-}
+
 
 	
