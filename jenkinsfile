@@ -10,6 +10,7 @@ pipeline
           }
       }
       stage('Build'){
+          steps{
                 sh 'mv wp-config-sample.php wp-config.php'
        		sh 'sed -i "s|khushboo|$host|g" wp-config.php'
        		sh 'sed -i "s|khushboo|$username|g" wp-config.php'
@@ -27,6 +28,7 @@ pipeline
 	       sh 'sudo chown -R www-data:www-data /var/www/html'
       }
     }
+}
 }
 }
 
