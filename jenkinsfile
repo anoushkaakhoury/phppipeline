@@ -12,10 +12,10 @@ pipeline
       stage('Build'){
           steps{
                 sh 'mv wp-config-sample.php wp-config.php'
-       		sh 'sed -i "s|khushboo|$host|g" wp-config.php'
-       		sh 'sed -i "s|khushboo|$username|g" wp-config.php'
-       		sh 'sed -i "s|khushboo|$pass|g" wp-config.php'
-       		sh 'sed -i "s|khushboo.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|$endpoint|g" wp-config.php'
+       		sh 'sed -i "s|khushbooj|$host|g" wp-config.php'
+       		sh 'sed -i "s|khushbooj|$username|g" wp-config.php'
+       		sh 'sed -i "s|khushbooj|$pass|g" wp-config.php'
+       		sh 'sed -i "s|khushbooj.cfdyrms3ajre.ap-south-1.rds.amazonaws.com|$endpoint|g" wp-config.php'
                 sh 'sed -i "s|:3306||g" wp-config.php'
         	sh 'cat wp-config.php'
 		}}
